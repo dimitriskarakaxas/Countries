@@ -24,16 +24,19 @@ const CountriesList = () => {
   return (
     <ul className="w-10/12 max-w-xl mx-auto">
       {countries.length > 0 &&
-        countries.map((country, idx) => (
-          <Country
-            key={country.numericCode}
-            flagUrl={country.flag}
-            name={country.name}
-            population={country.population}
-            region={country.region}
-            capital={country.capital}
-          />
-        ))}
+        countries.map((country, idx) => {
+          if (idx < 75)
+            return (
+              <Country
+                key={country.numericCode}
+                flagUrl={country.flag}
+                name={country.name}
+                population={country.population}
+                region={country.region}
+                capital={country.capital}
+              />
+            );
+        })}
     </ul>
   );
 };

@@ -1,5 +1,4 @@
 import { useEffect, useState, useCallback } from "react";
-import { Skeleton } from "@mantine/core";
 
 import Country from "./Country";
 import useHttp from "../../hooks/useHttp";
@@ -21,18 +20,10 @@ const CountriesList = () => {
     <ul className={`w-10/12 max-w-xl mx-auto`}>
       {isLoading && (
         <>
-          <li className="mb-8">
-            <Skeleton height={341} className="rounded-lg" />
-          </li>
-          <li className="mb-8">
-            <Skeleton height={341} className="rounded-lg" />
-          </li>
-          <li className="mb-8">
-            <Skeleton height={341} className="rounded-lg" />
-          </li>
-          <li>
-            <Skeleton height={341} className="rounded-lg" />
-          </li>
+          <Country loading={true} />
+          <Country loading={true} />
+          <Country loading={true} />
+          <Country loading={true} />
         </>
       )}
       {countries.length > 0 &&

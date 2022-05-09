@@ -2,7 +2,7 @@ const Country = ({ name, population, region, capital, flagUrl }) => {
   return (
     <li className="bg-white dark:bg-dark-blue-dm shadow-lg rounded-lg overflow-hidden mb-8">
       <div>
-        <img src={flagUrl} alt="" />
+        <img src={flagUrl} alt="" className="w-full h-full object-cover" />
       </div>
       <div className="p-6 pb-12">
         <h3 className="text-lg font-extrabold mb-4">{name}</h3>

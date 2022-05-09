@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { Skeleton } from "@mantine/core";
 
 import Country from "./Country";
 import useHttp from "../../hooks/useHttp";
@@ -6,37 +7,46 @@ import useHttp from "../../hooks/useHttp";
 const CountriesList = () => {
   const [countries, setCountries] = useState([]);
 
-  const transformData = (countries) => {
+  const transformData = useCallback((countries) => {
     setCountries(countries);
-  };
-
-  const { sendRequest: fetchCountries } = useHttp(
-    { url: "https://restcountries.com/v2/all" },
-    transformData
-  );
-
-  useEffect(() => {
-    fetchCountries();
   }, []);
 
-  console.log(countries);
+  const { isLoading, sendRequest: fetchCountries } = useHttp(transformData);
+
+  useEffect(() => {
+    fetchCountries({ url: "https://restcountries.com/v2/all" });
+  }, [fetchCountries]);
 
   return (
-    <ul className="w-10/12 max-w-xl mx-auto">
+    <ul className={`w-10/12 max-w-xl mx-auto`}>
+      {isLoading && (
+        <>
+          <li className="mb-8">
+            <Skeleton height={341} className="rounded-lg" />
+          </li>
+          <li className="mb-8">
+            <Skeleton height={341} className="rounded-lg" />
+          </li>
+          <li className="mb-8">
+            <Skeleton height={341} className="rounded-lg" />
+          </li>
+          <li>
+            <Skeleton height={341} className="rounded-lg" />
+          </li>
+        </>
+      )}
       {countries.length > 0 &&
-        countries.map((country, idx) => {
-          if (idx < 75)
-            return (
-              <Country
-                key={country.numericCode}
-                flagUrl={country.flag}
-                name={country.name}
-                population={country.population}
-                region={country.region}
-                capital={country.capital}
-              />
-            );
-        })}
+        !isLoading &&
+        countries.map((country, idx) => (
+          <Country
+            key={country.numericCode}
+            flagUrl={country.flag}
+            name={country.name}
+            population={country.population}
+            region={country.region}
+            capital={country.capital}
+          />
+        ))}
     </ul>
   );
 };

@@ -4,7 +4,9 @@ const Country = ({ name, population, region, capital, flagUrl, loading }) => {
   if (loading) {
     return (
       <li className="bg-white dark:bg-dark-blue-dm shadow-lg rounded-lg overflow-hidden mb-8">
-        <Skeleton width="100%" className="aspect-[5/3]" />
+        <div>
+          <Skeleton width="100%" className="aspect-[5/3] rounded-none" />
+        </div>
         <div className="p-6 pb-12">
           <Skeleton height={20} width="70%" className="mb-6" />
           <Skeleton height={14} width="70%" className="mb-3" />

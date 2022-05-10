@@ -17,9 +17,17 @@ const CountriesList = () => {
   }, [fetchCountries]);
 
   return (
-    <ul className={`w-10/12 max-w-xl mx-auto`}>
+    <ul className="w-10/12 max-w-xl mx-auto sm:max-w-full sm:w-full sm:grid sm:gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {isLoading && (
         <>
+          <Country loading={true} />
+          <Country loading={true} />
+          <Country loading={true} />
+          <Country loading={true} />
+          <Country loading={true} />
+          <Country loading={true} />
+          <Country loading={true} />
+          <Country loading={true} />
           <Country loading={true} />
           <Country loading={true} />
           <Country loading={true} />

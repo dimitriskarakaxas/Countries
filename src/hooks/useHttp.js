@@ -17,7 +17,9 @@ const useHttp = (applyData) => {
         });
 
         if (!response.ok) {
-          throw new Error("Request failed!");
+          throw new Error(
+            response.status === 404 ? "No countries found!" : "Request failed!"
+          );
         }
 
         const data = await response.json();

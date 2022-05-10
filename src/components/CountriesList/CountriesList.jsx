@@ -16,6 +16,8 @@ const CountriesList = () => {
     fetchCountries({ url: "https://restcountries.com/v2/all" });
   }, [fetchCountries]);
 
+  console.log(countries);
+
   return (
     <ul className="w-10/12 max-w-xl mx-auto sm:max-w-full sm:w-full sm:grid sm:gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {isLoading && (

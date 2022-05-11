@@ -48,16 +48,16 @@ const Home = () => {
   };
 
   return (
-    <section className="py-8">
+    <main className="py-8">
       <Container>
         <div className="mb-10 sm:flex sm:justify-between">
-          <div className="mb-10 sm:w-3/5 sm:max-w-lg">
+          <div className="mb-10 sm:mb-0 sm:w-3/5 sm:max-w-lg">
             <InputSearch
               enteredValue={enteredSearchValue}
               onValueChange={searchValueChangeHandler}
             />
           </div>
-          <div className="w-3/5 sm:max-w-[180px]">
+          <div className="w-3/5 sm:max-w-[200px]">
             <ContinentSelector
               selectedContinent={selectedContinent}
               onContinentChange={continentChangeHandler}
@@ -69,7 +69,7 @@ const Home = () => {
         )}
         {error && <p className="text-center">{error}</p>}
       </Container>
-    </section>
+    </main>
   );
 };
 

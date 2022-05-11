@@ -4,10 +4,13 @@ import Container from "../components/UI/Container";
 import InputSearch from "../components/InputSearch/InputSearch";
 import CountriesList from "../components/CountriesList/CountriesList";
 import useHttp from "../hooks/useHttp";
+import useDebounce from "../hooks/useDebounce";
 
 const Home = () => {
   const [enteredSearchValue, setEnteredSearchValue] = useState("");
   const [countries, setCountries] = useState([]);
+
+  const debouncedSearchTerm = useDebounce(enteredSearchValue, 500);
 
   const transformData = useCallback((countries) => {
     setCountries(countries);
@@ -20,11 +23,11 @@ const Home = () => {
   } = useHttp(transformData);
 
   useEffect(() => {
-    const url = enteredSearchValue
-      ? `https://restcountries.com/v2/name/${enteredSearchValue}`
+    const url = debouncedSearchTerm
+      ? `https://restcountries.com/v2/name/${debouncedSearchTerm}`
       : "https://restcountries.com/v2/all";
     fetchCountries({ url });
-  }, [fetchCountries, enteredSearchValue]);
+  }, [fetchCountries, debouncedSearchTerm]);
 
   const searchValueChangeHandler = (newValue) => {
     setEnteredSearchValue(newValue);

@@ -19,9 +19,9 @@ const CountriesList = ({ countries, isLoading }) => {
         !isLoading &&
         countries.map((country, idx) => (
           <Country
-            key={country.numericCode}
-            flagUrl={country.flag}
-            name={country.name}
+            key={idx}
+            flagUrl={country.flags.svg}
+            name={country.name.common}
             population={country.population}
             region={country.region}
             capital={country.capital}

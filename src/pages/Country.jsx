@@ -26,7 +26,6 @@ const Country = () => {
         flags,
       },
     ] = country;
-    console.log(country);
 
     const updatedCurrencies = [];
     Object.keys(currencies).forEach((key) => {
@@ -43,8 +42,6 @@ const Country = () => {
 
     const nativeName = name.nativeName[Object.keys(name.nativeName)[0]].common;
 
-    console.log(borders);
-
     const storedCountry = {
       name: name.common,
       nativeName,
@@ -58,8 +55,6 @@ const Country = () => {
       currencies: updatedCurrencies,
       languages: updatedLanguages,
     };
-
-    console.log(storedCountry);
 
     setCountry(storedCountry);
   }, []);
@@ -148,10 +143,15 @@ const Country = () => {
                 {country?.borders.length > 0 &&
                   country?.borders.map((border, idx) => (
                     <li
-                      className="bg-white dark:bg-dark-blue-dm shadow-md px-6 py-1 rounded-sm"
+                      className="bg-white dark:bg-dark-blue-dm shadow-md rounded-sm"
                       key={idx}
                     >
-                      <Link to={`/country/${border}`}>{border}</Link>
+                      <Link
+                        to={`/country/${border}`}
+                        className="px-6 py-1 inline-block"
+                      >
+                        {border}
+                      </Link>
                     </li>
                   ))}
               </ul>

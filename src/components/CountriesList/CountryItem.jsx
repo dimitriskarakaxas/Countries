@@ -9,6 +9,7 @@ const CountryItem = ({
   capital,
   flagUrl,
   loading,
+  countryId,
 }) => {
   if (loading) {
     return (
@@ -27,12 +28,12 @@ const CountryItem = ({
   }
 
   return (
-    <li className="bg-white dark:bg-dark-blue-dm shadow-lg rounded-lg overflow-hidden mb-8">
-      <Link to={`/country/${name}`}>
-        <div>
+    <li className="bg-white dark:bg-dark-blue-dm shadow-lg rounded-lg overflow-hidden mb-8 sm:mb-4">
+      <Link to={`/country/${countryId}`}>
+        <div className="group-hover:scale-90 transition-transform">
           <img
             src={flagUrl}
-            alt=""
+            alt={`${name}'s flag`}
             className="w-full object-cover aspect-[5/3]"
           />
         </div>

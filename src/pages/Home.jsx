@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import Container from "../components/UI/Container";
 import InputSearch from "../components/InputSearch/InputSearch";
 import ContinentSelector from "../components/ContinentSelector/ContinentSelector";
-import CountriesList from "../components/CountriesList/CountriesList";
+import CountryList from "../components/CountriesList/CountryList";
 import useHttp from "../hooks/useHttp";
 import useDebounce from "../hooks/useDebounce";
 
@@ -48,28 +48,24 @@ const Home = () => {
   };
 
   return (
-    <main className="py-8">
-      <Container>
-        <div className="mb-10 sm:flex sm:justify-between">
-          <div className="mb-10 sm:mb-0 sm:w-3/5 sm:max-w-lg">
-            <InputSearch
-              enteredValue={enteredSearchValue}
-              onValueChange={searchValueChangeHandler}
-            />
-          </div>
-          <div className="w-3/5 sm:max-w-[200px]">
-            <ContinentSelector
-              selectedContinent={selectedContinent}
-              onContinentChange={continentChangeHandler}
-            />
-          </div>
+    <Container>
+      <div className="mb-10 sm:flex sm:justify-between">
+        <div className="mb-10 sm:mb-0 sm:w-3/5 sm:max-w-lg">
+          <InputSearch
+            enteredValue={enteredSearchValue}
+            onValueChange={searchValueChangeHandler}
+          />
         </div>
-        {!error && (
-          <CountriesList countries={countries} isLoading={isLoading} />
-        )}
-        {error && <p className="text-center">{error}</p>}
-      </Container>
-    </main>
+        <div className="w-3/5 sm:max-w-[200px]">
+          <ContinentSelector
+            selectedContinent={selectedContinent}
+            onContinentChange={continentChangeHandler}
+          />
+        </div>
+      </div>
+      {!error && <CountryList countries={countries} isLoading={isLoading} />}
+      {error && <p className="text-center">{error}</p>}
+    </Container>
   );
 };
 

@@ -144,8 +144,10 @@ const Country = () => {
                 </p>
               </div>
             </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-2">Border Countries:</h4>
+            <div className="md:flex md:items-center">
+              <h4 className="text-lg font-semibold mb-2 md:mr-3 md:mb-0 md:shrink-0">
+                Border Countries:
+              </h4>
               <ul className="flex flex-wrap gap-2">
                 {country?.borders.length > 0 &&
                   country?.borders.map((border, idx) => (

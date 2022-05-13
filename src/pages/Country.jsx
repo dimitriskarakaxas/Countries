@@ -83,60 +83,67 @@ const Country = () => {
         Back
       </Button>
       {country && (
-        <div className="mt-16">
-          <div className="group-hover:scale-90 transition-transform">
+        <div className="mt-16 md:flex md:justify-between md:items-center">
+          <div className="group-hover:scale-90 transition-transform md:w-[46%]">
             <img
               src={`${country.flagUrl}`}
               alt={`${country.name}'s flag`}
               className="w-full object-cover aspect-[5/3]"
             />
           </div>
-          <div className="mt-10">
+          <div className="mt-10 md:w-[46%] lg:w-[40%] md:mt-0">
             <h3 className="text-xl font-extrabold mb-4">{country.name}</h3>
-            <p className="font-semibold mb-2">
-              Native Name:{" "}
-              <span className="font-normal">{country.nativeName}</span>
-            </p>
-            <p className="font-semibold mb-2">
-              Population:{" "}
-              <span className="font-normal">
-                {country.population.toLocaleString("en-US")}
-              </span>
-            </p>
-            <p className="font-semibold mb-2">
-              Region: <span className="font-normal">{country.region}</span>
-            </p>
-            <p className="font-semibold mb-2">
-              Sub Region:{" "}
-              <span className="font-normal">{country.subregion}</span>
-            </p>
-            <p className="font-semibold mb-8">
-              Capital: <span className="font-normal">{country.capital}</span>
-            </p>
-            <p className="font-semibold mb-2">
-              Top Level Domain:{" "}
-              <span className="font-normal">{country.tld}</span>
-            </p>
-            <p className="font-semibold mb-2">
-              Currencies:{" "}
-              {country?.currencies.length > 0 &&
-                country?.currencies.map((currency, idx) => (
-                  <span className="font-normal" key={idx}>
-                    {currency.name} ({currency.symbol})
-                    {idx !== country?.currencies.length - 1 ? ", " : ""}
+            <div className="md:flex md:justify-between">
+              <div className="">
+                <p className="font-semibold mb-2">
+                  Native Name:{" "}
+                  <span className="font-normal">{country.nativeName}</span>
+                </p>
+                <p className="font-semibold mb-2">
+                  Population:{" "}
+                  <span className="font-normal">
+                    {country.population.toLocaleString("en-US")}
                   </span>
-                ))}
-            </p>
-            <p className="font-semibold mb-8">
-              Languages:{" "}
-              {country.languages.length > 0 &&
-                country.languages.map((language, idx) => (
-                  <span className="font-normal" key={idx}>
-                    {language}
-                    {idx !== country.languages.length - 1 ? ", " : ""}
-                  </span>
-                ))}
-            </p>
+                </p>
+                <p className="font-semibold mb-2">
+                  Region: <span className="font-normal">{country.region}</span>
+                </p>
+                <p className="font-semibold mb-2">
+                  Sub Region:{" "}
+                  <span className="font-normal">{country.subregion}</span>
+                </p>
+                <p className="font-semibold mb-8">
+                  Capital:{" "}
+                  <span className="font-normal">{country.capital}</span>
+                </p>
+              </div>
+              <div className="md:ml-6">
+                <p className="font-semibold mb-2">
+                  Top Level Domain:{" "}
+                  <span className="font-normal">{country.tld}</span>
+                </p>
+                <p className="font-semibold mb-2">
+                  Currencies:{" "}
+                  {country?.currencies.length > 0 &&
+                    country?.currencies.map((currency, idx) => (
+                      <span className="font-normal" key={idx}>
+                        {currency.name} ({currency.symbol})
+                        {idx !== country?.currencies.length - 1 ? ", " : ""}
+                      </span>
+                    ))}
+                </p>
+                <p className="font-semibold mb-8">
+                  Languages:{" "}
+                  {country.languages.length > 0 &&
+                    country.languages.map((language, idx) => (
+                      <span className="font-normal" key={idx}>
+                        {language}
+                        {idx !== country.languages.length - 1 ? ", " : ""}
+                      </span>
+                    ))}
+                </p>
+              </div>
+            </div>
             <div>
               <h4 className="text-lg font-semibold mb-2">Border Countries:</h4>
               <ul className="flex flex-wrap gap-2">

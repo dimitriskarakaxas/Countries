@@ -9,7 +9,7 @@ import useDebounce from "../hooks/useDebounce";
 
 const Home = () => {
   const [enteredSearchValue, setEnteredSearchValue] = useState("");
-  const [selectedContinent, setSelectedContinent] = useState(null);
+  const [selectedContinent, setSelectedContinent] = useState(false);
   const [countries, setCountries] = useState([]);
 
   const debouncedSearchTerm = useDebounce(enteredSearchValue, 500);
@@ -32,10 +32,10 @@ const Home = () => {
   }, [fetchCountries, debouncedSearchTerm]);
 
   useEffect(() => {
+    if (selectedContinent === false) return;
     const url = selectedContinent
       ? `https://restcountries.com/v3.1/region/${selectedContinent}`
       : "https://restcountries.com/v3.1/all";
-
     fetchCountries({ url });
   }, [fetchCountries, selectedContinent]);
 

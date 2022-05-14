@@ -92,7 +92,7 @@ const Country = () => {
             />
           </div>
           <div className="mt-10 md:w-[46%] lg:w-[40%] md:mt-0">
-            <h3 className="text-xl font-extrabold mb-4">{country.name}</h3>
+            <h2 className="text-xl font-extrabold mb-4">{country.name}</h2>
             <div className="md:flex md:justify-between">
               <div className="">
                 <p className="font-semibold mb-2">

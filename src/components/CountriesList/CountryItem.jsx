@@ -38,7 +38,7 @@ const CountryItem = ({
           />
         </div>
         <div className="p-6 pb-12">
-          <h3 className="text-lg font-extrabold mb-4">{name}</h3>
+          <h2 className="text-lg font-extrabold mb-4">{name}</h2>
           <p className="font-semibold mb-1">
             Population:{" "}
             <span className="font-normal">

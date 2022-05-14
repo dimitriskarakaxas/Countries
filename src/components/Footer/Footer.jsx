@@ -21,12 +21,13 @@ const Footer = () => {
                 href="https://www.linkedin.com/in/dimitris-karakaxas/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="App's creator LinkedIn Profile"
               >
                 <FaLinkedinIn />
               </a>
             </li>
             <li className="ml-4">
-              <a href="/">
+              <a href="/" aria-label="Apps's creator WhatsApp Profile">
                 <SiWhatsapp />
               </a>
             </li>
@@ -35,6 +36,7 @@ const Footer = () => {
                 href="https://github.com/dimitriskarakaxas"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Apps's creator GitHub Profile"
               >
                 <BsGithub />
               </a>
@@ -51,6 +53,7 @@ const Footer = () => {
             className="flex justify-center"
             target="_blank"
             rel="noreferrer"
+            aria-label="App's Github repository"
           >
             <p className="bg-blue-400 hover:bg-purple-400 px-3 py-1 flex justify-center items-center">
               Get the code <DiGithubFull className="text-4xl ml-2" />
